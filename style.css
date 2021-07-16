@@ -1,0 +1,221 @@
+:root {
+    margin: 0;
+    width: 100%;
+    color:black;
+    font-family: "Roboto", sans-serif;
+    background-color: #f6f6f6;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+#main-content {
+    margin-top: 2%;
+    padding-left: 10%;
+    padding-right: 5%;
+    background-color: #f6f6f6;
+}
+
+ul {
+    margin: 1em 0;
+}
+
+.footer {
+    font-size: 14px;
+    text-align: center;
+}
+
+.header {
+    margin-top: 2%;
+}
+
+.header h1 {
+    font-size: 50px;
+    font-family: "Yantramanav", sans-serif;
+    text-transform: uppercase;
+}
+
+/* navbar */
+
+:root {
+    --primary: 237, 94%, 81%;
+    --background: 266, 16%, 92%;
+    --background-secondary: 256, 12%, 12%;
+    --background-secondary-dark: 256, 10%, 10%;
+    --background-secondary-light: 257, 11%, 16%;
+    --text-primary: 0, 0%, 0%;
+    /* Colors */
+    --black: 0, 0%, 0%;
+    --white: 0, 0%, 100%;
+    --quite-gray: 0, 0%, 50%;
+    --grooble: 10, 28%, 93%;
+    /* misc */
+    --transition-main: .175, .685, .32;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flexbox-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flexbox-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flexbox-col {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.flexbox-col-left {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.flexbox-col-left-ns {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.flexbox-col-right {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.flexbox-col-start-center {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.flexbox-space-bet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar {
+    top: 0;
+    padding: 0;
+    width: 5em;
+    height: 100vh;
+    position: fixed;
+    background-color: hsl(var(--background-secondary));
+    transition: width .35s cubic-bezier(var(--transition-main), 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    color:white;
+    text-decoration: none;
+}
+#navbar:hover {
+    width: 16em;
+}
+#navbar::-webkit-scrollbar-track {
+    background-color: hsl(var(--background-secondary));
+}
+#navbar::-webkit-scrollbar {
+    width: 8px;
+    background-color: hsl(var(--background-secondary));
+}
+#navbar::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary));
+}
+.navbar-items {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.navbar-logo {
+    margin: 0 0 2em 0;
+    width: 100%;
+    height: 5em;
+    background: hsl(var(--background-secondary-dark));
+}
+.navbar-logo > .navbar-item-inner {
+    width: calc(5rem - 8px);
+}
+.navbar-logo > .navbar-item-inner:hover {
+    background-color: transparent;
+}
+.navbar-logo > .navbar-item-inner > svg {
+    height: 2em;
+    fill: #fff;
+}
+
+.navbar-item {
+    padding: 0 .5em;
+    width: 100%;
+    cursor: pointer;
+}
+.navbar-item-inner {
+    padding: 1em 0;
+    width: 100%;
+    position: relative;
+    color: gray;
+    border-radius: .25em;
+    text-decoration: none;
+    transition: all .2s cubic-bezier(var(--transition-main), 1);
+}
+.navbar-item-inner:hover {
+    color: hsl(var(--white));
+    background: hsl(var(--background-secondary-light));
+    box-shadow: 0 17px 30px -10px hsla(black, .25);
+}
+.navbar-item-inner-icon-wrapper {
+    width: calc(5rem - 1em - 8px);
+    position: relative;
+}
+.navbar-item-inner-icon-wrapper i {
+    position: absolute;
+    font-size: calc(var(--navbar-buttons) - 1rem);
+}
+.link-text {
+    margin: 0;
+    width: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all .35s cubic-bezier(var(--transition-main), 1);
+    overflow: hidden;
+    opacity: 0;
+    text-decoration: none;
+}
+#navbar:hover .link-text {
+    width: calc(100% - calc(5rem - 8px));
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* posts */
+
+.post a h3 {
+    color: black;
+    font-weight: bold;
+}
+
+.post a .info {
+    color: black;
+}
+
+.post a:hover {
+    text-decoration: none;;
+}
+
+.read_more {
+    font-style: italic;
+    color: gray;
+}
