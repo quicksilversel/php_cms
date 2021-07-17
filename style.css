@@ -10,7 +10,7 @@
 
 #main-content {
     margin-top: 2%;
-    padding-left: 10%;
+    padding-left: 10%; /* leave space for side nav */
     padding-right: 5%;
     background-color: #f6f6f6;
 }
@@ -19,22 +19,27 @@ ul {
     margin: 1em 0;
 }
 
-.footer {
-    font-size: 14px;
-    text-align: center;
-}
-
+/* header */ 
 .header {
-    margin-top: 2%;
+    font-family: "Roboto", sans-serif;
+    color: black;
+    padding-bottom: 1%;
 }
 
-.header h1 {
-    font-size: 50px;
-    font-family: "Yantramanav", sans-serif;
-    text-transform: uppercase;
+.header a {
+    color: black;
 }
 
-/* navbar */
+.header a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-login li {
+    padding-left: 8%;
+}
+
+/* side navbar */
 
 :root {
     --primary: 237, 94%, 81%;
@@ -108,7 +113,7 @@ ul {
     align-items: center;
 }
 
-#navbar {
+#side-navbar {
     top: 0;
     padding: 0;
     width: 5em;
@@ -120,18 +125,19 @@ ul {
     overflow-x: hidden;
     color:white;
     text-decoration: none;
+    z-index: 1000;
 }
-#navbar:hover {
+#side-navbar:hover {
     width: 16em;
 }
-#navbar::-webkit-scrollbar-track {
+#side-navbar::-webkit-scrollbar-track {
     background-color: hsl(var(--background-secondary));
 }
-#navbar::-webkit-scrollbar {
+#side-navbar::-webkit-scrollbar {
     width: 8px;
     background-color: hsl(var(--background-secondary));
 }
-#navbar::-webkit-scrollbar-thumb {
+#side-navbar::-webkit-scrollbar-thumb {
     background-color: hsl(var(--primary));
 }
 .navbar-items {
@@ -194,28 +200,119 @@ ul {
     opacity: 0;
     text-decoration: none;
 }
-#navbar:hover .link-text {
+#side-navbar:hover .link-text {
     width: calc(100% - calc(5rem - 8px));
     opacity: 1;
     text-decoration: none;
 }
 
-/* posts */
+/* posts in main page */
 
-.post a h3 {
+.post-title {
     color: black;
     font-weight: bold;
 }
 
-.post a .info {
+.post a {
     color: black;
+    text-decoration: none;
 }
 
 .post a:hover {
-    text-decoration: none;;
+    text-decoration: none;
+    color: black;
 }
 
-.read_more {
+.read-more {
     font-style: italic;
     color: gray;
+}
+
+/* login & register page */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.login-container h2 {
+    margin-bottom: 10%;
+}
+
+.login-container input {
+    margin: 2% auto;
+}
+
+.login-container button {
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* single post page */
+
+.page-container {
+    font-family: "Roboto", sans-serif;
+	min-height: 250px;
+    margin-bottom: 5%;
+}
+.post-container {
+	min-height: 300px;
+	padding: 20px;
+	border: 1px solid #e4e1e1;
+	border-radius: 2px;
+}
+.post-container h2.post-title {
+	margin: 10px auto 20px;
+}
+.post-body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+}
+.post-body p {
+	margin: 20px 0px;
+}
+
+/* register & login */ 
+.message {
+	width: 100%; 
+	margin: 0px auto; 
+	padding: 10px 0px; 
+	color: #3c763d; 
+	background: #dff0d8; 
+	border: 1px solid #3c763d;
+	border-radius: 5px; 
+	text-align: center;
+}
+.error {
+	color: #a94442; 
+	background: #f2dede; 
+	border: 1px solid #a94442; 
+	margin-bottom: 20px;
+}
+.validation_errors p {
+	text-align: left;
+	margin-left: 10px;
+}
+.logged_in_info {
+	text-align: right; 
+	padding: 10px;
+}
+
+/* dashboard */
+
+
+/* footer */
+
+.footer {
+    font-size: 14px;
+    text-align: center;
 }

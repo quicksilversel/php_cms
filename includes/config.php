@@ -18,16 +18,16 @@
 	define('BASE_URL', 'http://localhost/blog/');
 
 	switch ($_SERVER["SCRIPT_NAME"]) {
-		case "/~zoe/blog/about.php":
-			$CURRENT_PAGE = "About"; 
-			$PAGE_TITLE = "About Us";
+		case "~/zoe/blog/register.php":
+			$CURRENT_PAGE = "Register"; 
+			$PAGE_TITLE = "Register";
 			break;
-		case "/~zoe/blog/contact.php":
-			$CURRENT_PAGE = "Contact"; 
-			$PAGE_TITLE = "Contact Us";
+		case "~/zoe/blog/login.php":
+			$CURRENT_PAGE = "Login"; 
+			$PAGE_TITLE = "Login";
 			break;
 		default:
 			$CURRENT_PAGE = "Index";
-			$PAGE_TITLE = "Template";
+			$PAGE_TITLE = "Blog";
 	}
 ?>
