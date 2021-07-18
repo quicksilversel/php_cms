@@ -21,21 +21,24 @@
                 Articles on <u><?php echo getTopicNameById($topic_id); ?></u>
             </h2>
             <hr>
-            <?php foreach ($posts as $post): ?>
-                <div class="post" style="margin-left: 0px;">
-                    <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post-image" alt="">
-                    <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
-                        <div class="post-info">
-                            <h3 class="post-title"><?php echo $post['title'] ?></h3>
-                            <div class="info">
-                                <span><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
-                                <br>
-                                <span class="read-more">Read more...</span>
+            <!-- posts -->
+            <div class="row">
+                <?php foreach ($posts as $post): ?>
+                    <div class="post col-lg-6 col-sm-12" style="margin-left: 0px;">
+                        <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post-image" alt="">
+                        <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
+                            <div class="post-info">
+                                <h3 class="post-title"><?php echo $post['title'] ?></h3>
+                                <div class="info">
+                                    <span><?php echo date("F j, Y ", strtotime($post["created_at"])); ?></span>
+                                    <br>
+                                    <span class="read-more">Read more...</span>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            <?php endforeach ?>
+                        </a>
+                    </div>
+                <?php endforeach ?>
+            </div>
             <?php include("includes/footer.php");?>
 		</div>
 	</body>

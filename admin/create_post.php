@@ -1,6 +1,6 @@
-<?php  include('../includes/config.php'); ?>
-<?php  include('admin_functions.php'); ?>
-<?php  include('includes/post_functions.php'); ?>
+<?php include('../includes/config.php'); ?>
+<?php include('admin_functions.php'); ?>
+<?php include('post_functions.php'); ?>
 <?php $topics = getAllTopics();	?>
 <!DOCTYPE html>
 <html>
@@ -30,9 +30,11 @@
                     <br>
                     <textarea name="body" id="body" cols="30" rows="10"><?php echo $body; ?></textarea>
                     <br>
-                    <label>Featured image : </label>
+                    <label>Featured image (Max size : 2MB) </label>
+                    <br>
                     <input type="file" name="featured_image" >
                     <br>
+                    <!-- topic selector -->
                     <select name="topic_id">
                         <option value="" selected disabled>Choose topic</option>
                         <?php foreach ($topics as $topic): ?>

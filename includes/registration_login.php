@@ -65,7 +65,7 @@
 	// LOG IN
 	if (isset($_POST['login_btn'])) {
 		$username = esc($_POST['username']);
-		$password = esc($_POST['password']);
+		$password = md5(esc($_POST['password']));
 
 		if (empty($username)) { array_push($errors, "Username required"); }
 		if (empty($password)) { array_push($errors, "Password required"); }

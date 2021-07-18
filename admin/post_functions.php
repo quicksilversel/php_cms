@@ -48,9 +48,6 @@ function getPostAuthorById($user_id)
 	}
 }
 
-/* - - - - - - - - - - 
--  Post actions
-- - - - - - - - - - -*/
 // if user clicks the create post button
 if (isset($_POST['create_post'])) { createPost($_POST); }
 // if user clicks the Edit post button
@@ -92,7 +89,7 @@ function createPost($request_values)
 	  	// image file directory
 	  	$target = "../static/images/" . basename($featured_image);
 	  	if (!move_uploaded_file($_FILES['featured_image']['tmp_name'], $target)) {
-	  		array_push($errors, "Failed to upload image. Please check file settings for your server");
+	  		array_push($errors, "Failed to upload image. Not uploaded because of error #". $_FILES["featured_image"]["error"]);
 	  	}
 		// Ensure that no post is saved twice. 
 		$post_check_query = "SELECT * FROM posts WHERE slug='$post_slug' LIMIT 1";
@@ -120,13 +117,21 @@ function createPost($request_values)
 	// Edit Post : Takes post id as parameter
 	function editPost($role_id)
 	{
-		global $conn, $title, $post_slug, $body, $published, $isEditingPost, $post_id;
+		global $conn, $title, $post_slug, $body, $published, $isEditingPost, $post_id, $topic_id, $topic_name;
 		$sql = "SELECT * FROM posts WHERE id=$role_id LIMIT 1";
 		$result = mysqli_query($conn, $sql);
 		$post = mysqli_fetch_assoc($result);
 		$title = $post['title'];
 		$body = $post['body'];
 		$published = $post['published'];
+
+		// get post topic
+		$sql = "SELECT * FROM topics WHERE id=$role_id";
+		$result = mysqli_query($conn, $sql);
+		$topic = mysqli_fetch_assoc($result);
+		$topic_id = $topic['id'];
+		$topic_name = $topic['name'];
+
 	}
 
 	function updatePost($request_values)
@@ -136,10 +141,15 @@ function createPost($request_values)
 		$title = esc($request_values['title']);
 		$body = esc($request_values['body']);
 		$post_id = esc($request_values['post_id']);
+		// if topic value is changed
 		if (isset($request_values['topic_id'])) {
 			$topic_id = esc($request_values['topic_id']);
 		}
 		$post_slug = makeSlug($title);
+		// if publish value is changed
+		if (isset($request_values['publish'])) {
+			$published = esc($request_values['publish']);
+		}
 
 		if (empty($title)) { array_push($errors, "Post title is required"); }
 		if (empty($body)) { array_push($errors, "Post body is required"); }
@@ -153,20 +163,29 @@ function createPost($request_values)
 		  		array_push($errors, "Failed to upload image. Please check file settings for your server");
 		  	}
 		}
-		// register topic 
+		// update post 
 		if (count($errors) == 0) {
 			$query = "UPDATE posts SET title='$title', slug='$post_slug', views=0, image='$featured_image', body='$body', published=$published, updated_at=now() WHERE id=$post_id";
 			// attach topic to post on post_topic table
-			if(mysqli_query($conn, $query)){ // if post created successfully
-				if (isset($topic_id)) {
+			if(mysqli_query($conn, $query)){ // if post updated successfully
+				// update post_topic table if topic is changed
+				if (isset($topic_id)) { 
 					$inserted_post_id = mysqli_insert_id($conn);
-					// create relationship between post and topic
-					$sql = "INSERT INTO post_topic (post_id, topic_id) VALUES($inserted_post_id, $topic_id)";
-					mysqli_query($conn, $sql);
-					$_SESSION['message'] = "Post created successfully";
-					header('location: posts.php');
-					exit(0);
+					$sql = "UPDATE post_topic SET topic_id=$topic_id WHERE post_id=$inserted_post_id)";
+					if(mysqli_query($conn, $sql)){
+						$_SESSION['message'] = "Post updated successfully";
+						header('location: posts.php');
+						exit(0);
+					}
+					else{
+						echo mysqli_error($conn);
+						header("location: posts.php");
+					}
 				}
+			}
+			else{
+				echo mysqli_error($conn);
+				header("location: posts.php");
 			}
 			$_SESSION['message'] = "Post updated successfully";
 			header('location: posts.php');
@@ -174,14 +193,20 @@ function createPost($request_values)
 		}
 	}
 	// delete blog post
-	function deletePost($post_id)
-	{
+	function deletePost($post_id){
 		global $conn;
-		$sql = "DELETE FROM posts WHERE id=$post_id";
-		if (mysqli_query($conn, $sql)) {
+		// first delete post from posts table with id 
+		// delete post from post_topic 
+		$sql = "DELETE FROM post_topic WHERE post_id=$post_id;
+				DELETE FROM posts WHERE id=$post_id;";
+		if (mysqli_multi_query($conn, $sql)) {
 			$_SESSION['message'] = "Post successfully deleted";
 			header("location: posts.php");
 			exit(0);
+		}
+		else{
+			echo mysqli_error($conn);
+			header("location: posts.php");
 		}
 	}
 
@@ -197,7 +222,7 @@ function createPost($request_values)
         }
         togglePublishPost($post_id, $message);
     }
-    // delete blog post
+    // publish / unpublish blog post
     function togglePublishPost($post_id, $message)
     {
         global $conn;
@@ -209,4 +234,6 @@ function createPost($request_values)
             exit(0);
         }
     }
+
+	// change topic button
 ?>

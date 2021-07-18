@@ -42,6 +42,7 @@ ul {
 /* footer */
 
 .footer {
+    margin-top: 10%;
     font-size: 14px;
     text-align: center;
 }
@@ -216,7 +217,8 @@ ul {
 /* posts in main page */
 
 .post-image {
-    height: 260px;
+    width: 80%;
+    height: auto;
 	background-size: 100%;
     margin: 1% 0;
 }
@@ -294,7 +296,7 @@ ul {
 	margin: 20px 0px;
 }
 
-/* register & login */ 
+/* messages & error */ 
 .message {
 	width: 100%; 
 	margin: 0px auto; 
@@ -314,10 +316,6 @@ ul {
 .validation_errors p {
 	text-align: left;
 	margin-left: 10px;
-}
-.logged_in_info {
-	text-align: right; 
-	padding: 10px;
 }
 
 /* admin user */
@@ -365,9 +363,6 @@ ul {
 .create-post textarea[name=body] {
     margin-top: 2%;
     width: 95%;
-}
-.create-post input[type=file] {
-    margin-top: 2%;
 }
 .create-post select[name=topic_id] {
     margin-top: 1%;

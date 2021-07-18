@@ -1,6 +1,6 @@
 <?php include('../includes/config.php'); ?>
 <?php include('admin_functions.php'); ?>
-<?php include('includes/post_functions.php'); ?>
+<?php include('post_functions.php'); ?>
 <?php $posts = getAllPosts(); ?>
 <!DOCTYPE html>
 <html>
@@ -72,7 +72,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a  class="fa fa-trash btn delete" 
+                                        <a class="fa fa-trash btn delete" 
                                             href="create_post.php?delete-post=<?php echo $post['id'] ?>">
                                         </a>
                                     </td>
