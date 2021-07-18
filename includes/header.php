@@ -7,6 +7,9 @@
 			<ul class="navbar-nav ml-auto">
 			<?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
 				<li class="nav-item">
+					<a class="nav-link" href="admin/dashboard.php"><?php echo $_SESSION['user']['username'] ?></a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="logout.php">Logout</a>	
 				</li>
 			<?php else: ?>

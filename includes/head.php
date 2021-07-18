@@ -5,7 +5,7 @@
 	<meta name="keywords" content="" /> 
 <?php } ?>
 
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'style.css'; ?>" />
 <!-- bootstrap -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -39,6 +39,13 @@ ul {
     padding-left: 8%;
 }
 
+/* footer */
+
+.footer {
+    font-size: 14px;
+    text-align: center;
+}
+
 /* side navbar */
 
 :root {
@@ -208,6 +215,12 @@ ul {
 
 /* posts in main page */
 
+.post-image {
+    height: 260px;
+	background-size: 100%;
+    margin: 1% 0;
+}
+
 .post-title {
     color: black;
     font-weight: bold;
@@ -307,12 +320,60 @@ ul {
 	padding: 10px;
 }
 
+/* admin user */
+
 /* dashboard */
 
-
-/* footer */
-
-.footer {
-    font-size: 14px;
-    text-align: center;
+.dashboard a {
+    color: black;
 }
+
+.dashboard a:hover {
+    color: black;
+}
+
+.dashboard-table {
+  margin-top: 4%;
+}
+
+.menu {
+    float: right;
+}
+
+/* manage page */ 
+
+.manage button {
+    border: 1px solid black;
+}
+
+.manage-table {
+    margin-top: 2%;
+}
+
+.manage-table a {
+    color: black;
+}
+.manage-table a:hover {
+    color: black;
+}
+
+/* create new post */
+
+.create-post input[name=title] {
+    width: 95%;
+}
+.create-post textarea[name=body] {
+    margin-top: 2%;
+    width: 95%;
+}
+.create-post input[type=file] {
+    margin-top: 2%;
+}
+.create-post select[name=topic_id] {
+    margin-top: 1%;
+}
+.create-post input[name=publish] {
+    margin-top: 1%;
+}
+
+

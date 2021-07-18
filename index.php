@@ -24,6 +24,8 @@
                             <?php echo $post['topic']['name'] ?>
                         </a>
                     <?php endif ?>
+                    <br>
+                    <img src="<?php echo BASE_URL . '/static/images/' . $post['image']; ?>" class="post-image" alt="">
                     <a href="single_post.php?post-slug=<?php echo $post['slug']; ?>">
                         <div class="post-info">
                             <h3 class="post-title"><?php echo $post['title'] ?></h3>

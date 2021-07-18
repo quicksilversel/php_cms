@@ -17,15 +17,37 @@
 	define ('ROOT_PATH', realpath(dirname(__FILE__)));
 	define('BASE_URL', 'http://localhost/blog/');
 
+	// automatically generates page title
 	switch ($_SERVER["SCRIPT_NAME"]) {
-		case "~/zoe/blog/register.php":
-			$CURRENT_PAGE = "Register"; 
+		case '/blog/register.php':
+			$CURRENT_PAGE = "register"; 
 			$PAGE_TITLE = "Register";
 			break;
-		case "~/zoe/blog/login.php":
-			$CURRENT_PAGE = "Login"; 
+		case "/blog/login.php":
+			$CURRENT_PAGE = "login"; 
 			$PAGE_TITLE = "Login";
 			break;
+		case "/blog/admin/dashboard.php":
+			$CURRENT_PAGE = "dashboard"; 
+			$PAGE_TITLE = "Dashboard";
+			break;
+		case "/blog/admin/create_post.php":
+			$CURRENT_PAGE = "create-post"; 
+			$PAGE_TITLE = "Create Post";
+			break;
+		case "/blog/admin/posts.php":
+			$CURRENT_PAGE = "manage-post"; 
+			$PAGE_TITLE = "Manage Posts";
+			break;
+		case "/blog/admin/topics.php":
+			$CURRENT_PAGE = "manage-topic"; 
+			$PAGE_TITLE = "Manage Topics";
+			break;
+		case "/blog/admin/users.php":
+			$CURRENT_PAGE = "manage-user"; 
+			$PAGE_TITLE = "Manage Users";
+			break;
+		// TODO: get post id and topic id to generate title
 		default:
 			$CURRENT_PAGE = "Index";
 			$PAGE_TITLE = "Blog";
