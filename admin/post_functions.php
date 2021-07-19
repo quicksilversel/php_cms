@@ -100,7 +100,8 @@ function createPost($request_values)
 		}
 		// create post
 		if (count($errors) == 0) {
-			$query = "INSERT INTO posts (user_id, title, slug, image, body, published, created_at, updated_at) VALUES(1, '$title', '$post_slug', '$featured_image', '$body', $published, now(), now())";
+			$user_id = $_SESSION['user']['id'];
+			$query = "INSERT INTO posts (user_id, title, slug, image, body, published, created_at, updated_at) VALUES($user_id, '$title', '$post_slug', '$featured_image', '$body', $published, now(), now())";
 			if(mysqli_query($conn, $query)){ // if post created successfully
 				$inserted_post_id = mysqli_insert_id($conn);
 				// create relationship between post and topic
@@ -117,13 +118,14 @@ function createPost($request_values)
 	// Edit Post : Takes post id as parameter
 	function editPost($role_id)
 	{
-		global $conn, $title, $post_slug, $body, $published, $isEditingPost, $post_id, $topic_id, $topic_name;
+		global $conn, $title, $post_slug, $body, $published, $isEditingPost, $post_id, $topic_id, $topic_name, $featured_image;
 		$sql = "SELECT * FROM posts WHERE id=$role_id LIMIT 1";
 		$result = mysqli_query($conn, $sql);
 		$post = mysqli_fetch_assoc($result);
 		$title = $post['title'];
 		$body = $post['body'];
 		$published = $post['published'];
+		$featured_image = $post['image'];
 
 		// get post topic
 		$sql = "SELECT * FROM topics WHERE id=$role_id";
@@ -131,7 +133,6 @@ function createPost($request_values)
 		$topic = mysqli_fetch_assoc($result);
 		$topic_id = $topic['id'];
 		$topic_name = $topic['name'];
-
 	}
 
 	function updatePost($request_values)
@@ -173,8 +174,7 @@ function createPost($request_values)
 				exit(0);
 			}
 			else{
-				echo mysqli_error($conn);
-				header("location: posts.php");
+				array_push($errors, "mysqli_error($conn)");
 			}
 		}
 	}
@@ -192,7 +192,7 @@ function createPost($request_values)
 			exit(0);
 		}
 		else{
-			echo mysqli_error($conn);
+			array_push($errors, "mysqli_error($conn)");
 			header("location: posts.php");
 		}
 	}

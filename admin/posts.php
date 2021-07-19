@@ -13,7 +13,7 @@
         <div id="main-content">
             <!-- header -->
             <?php include("../includes/header.php");?>
-            <a href="<?php echo BASE_URL . 'admin/dashboard.php' ?>">Go back to dashboard</a>
+            <a href="<?php echo BASE_URL . 'admin/dashboard.php' ?>">Return to dashboard</a>
             <!-- manage posts -->
             <div class="manage">
                 <h1>Manage Posts</h1>
@@ -83,6 +83,8 @@
                     <?php endif ?>
                 </div>
             </div>
+            <a href="<?php echo BASE_URL . 'admin/create_post.php' ?>">Create a new post</a>
+
         </div>
     </body>
 </html>

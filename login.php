@@ -20,11 +20,11 @@
                         <input type="password" name="password" placeholder="Password">
                         <button type="submit" class="text-center" name="login_btn">Login</button>
                         <p class="text-center">
-                            Not yet a member? <a href="register.php">Sign up</a>
+                            Not yet a member? <a href="<?php echo BASE_URL . 'register.php'; ?>">Sign up</a>
                         </p>
                     </form>
                 </div>
-            <?php include("includes/footer.php");?>
+            
         </div>
 	</body>
 </html>

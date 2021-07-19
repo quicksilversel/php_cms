@@ -13,7 +13,7 @@
 		<div id="main-content">
             <!-- header -->
             <?php include("includes/header.php");?>
-			<h2>Welcome to my blog!</h2>
+			<h2>Blog</h2>
 			<hr>          
             <!-- posts -->
             <div class="row">
@@ -40,8 +40,8 @@
                     </div>
                 <?php endforeach ?>
             </div>
-            <?php include("includes/footer.php");?>
 		</div>
+        <?php include("includes/footer.php");?>
 
 	</body>
 </html>

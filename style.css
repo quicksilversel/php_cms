@@ -12,6 +12,7 @@
     margin-top: 2%;
     padding-left: 10%; /* leave space for side nav */
     padding-right: 5%;
+    padding-bottom: 10%;
     background-color: #f6f6f6;
 }
 
@@ -24,6 +25,7 @@ ul {
     font-family: "Roboto", sans-serif;
     color: black;
     padding-bottom: 1%;
+    text-transform: capitalize;
 }
 
 .header a {
@@ -42,9 +44,26 @@ ul {
 /* footer */
 
 .footer {
-    margin-top: 10%;
+    background-color: hsl(var(--background-secondary-dark));
+    padding-left: 10%; /* leave space for side nav */
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     font-size: 14px;
+    color: #f6f6f6;
+}
+
+.footer .row {
     text-align: center;
+}
+
+.footer a {
+    color: #f6f6f6;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #f6f6f6;
 }
 
 /* side navbar */
@@ -215,6 +234,9 @@ ul {
 }
 
 /* posts in main page */
+.post {
+    margin-bottom: 2%;
+}
 
 .post-image {
     width: 80%;
@@ -226,6 +248,7 @@ ul {
 .post-title {
     color: black;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .post a {
@@ -285,8 +308,9 @@ ul {
 	border: 1px solid #e4e1e1;
 	border-radius: 2px;
 }
-.post-container h2.post-title {
-	margin: 10px auto 20px;
+.post-container .post-title {
+	margin-bottom : 5%;
+    text-align: center;
 }
 .post-body {
 	font-family: 'Roboto', sans-serif;
@@ -358,11 +382,11 @@ ul {
 /* create new post */
 
 .create-post input[name=title] {
-    width: 95%;
+    width: 100%;
 }
 .create-post textarea[name=body] {
     margin-top: 2%;
-    width: 95%;
+    width: 100%;
 }
 .create-post select[name=topic_id] {
     margin-top: 1%;

@@ -24,11 +24,10 @@
                     <br>
                     <button type="submit" name="reg_user">Register</button>
                     <p class="text-center">
-                        Already a member? <a href="login.php">Sign in</a>
+                        Already a member? <a href="<?php echo BASE_URL . "login.php"?>">Sign in</a>
                     </p>
                 </form>
             </div>
-            <?php include("includes/footer.php");?>
 		</div>
 
 	</body>

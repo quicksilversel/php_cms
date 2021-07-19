@@ -15,7 +15,7 @@
 		<div id="main-content">
 			<!-- header -->
             <?php include("../includes/header.php");?>
-			<a href="<?php echo BASE_URL . 'admin/dashboard.php' ?>">Go back to dashboard</a>
+			<a href="<?php echo BASE_URL . 'admin/dashboard.php' ?>">Return to dashboard</a>
 			<!-- Manage users -->
 			<div class="manage">
 				<h1>Create/Edit Admin User</h1>

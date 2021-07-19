@@ -14,7 +14,7 @@
 				</li>
 			<?php else: ?>
 				<li class="nav-item">
-					<a href=<?php echo BASE_URL . 'login.php'; ?>>Login </a>
+					<a href=<?php echo BASE_URL . 'login.php'; ?>>Login</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo BASE_URL . 'register.php'; ?>">Register</a>

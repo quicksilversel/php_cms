@@ -14,7 +14,7 @@
         <div id="main-content">
             <!-- header -->
             <?php include("../includes/header.php");?>
-            <a href="<?php echo BASE_URL . 'admin/dashboard.php' ?>">Go back to dashboard</a>
+            <a href="<?php echo BASE_URL . 'admin/dashboard.php' ?>">Return to dashboard</a>
             <!-- Create new post  -->
             <div class="manage create-post">
                 <h1>Create/Edit Post</h1>
