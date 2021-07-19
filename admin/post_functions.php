@@ -165,33 +165,20 @@ function createPost($request_values)
 		}
 		// update post 
 		if (count($errors) == 0) {
-			$query = "UPDATE posts SET title='$title', slug='$post_slug', views=0, image='$featured_image', body='$body', published=$published, updated_at=now() WHERE id=$post_id";
-			// attach topic to post on post_topic table
-			if(mysqli_query($conn, $query)){ // if post updated successfully
-				// update post_topic table if topic is changed
-				if (isset($topic_id)) { 
-					$inserted_post_id = mysqli_insert_id($conn);
-					$sql = "UPDATE post_topic SET topic_id=$topic_id WHERE post_id=$inserted_post_id)";
-					if(mysqli_query($conn, $sql)){
-						$_SESSION['message'] = "Post updated successfully";
-						header('location: posts.php');
-						exit(0);
-					}
-					else{
-						echo mysqli_error($conn);
-						header("location: posts.php");
-					}
-				}
+			$query = "UPDATE posts SET title='$title', slug='$post_slug', views=0, image='$featured_image', body='$body', published=$published, updated_at=now() WHERE id=$post_id;
+					  UPDATE post_topic SET topic_id=$topic_id WHERE post_id=$post_id;";
+			if(mysqli_multi_query($conn, $query)) {
+				$_SESSION['message'] = "Post updated successfully";
+				header('location: posts.php');
+				exit(0);
 			}
 			else{
 				echo mysqli_error($conn);
 				header("location: posts.php");
 			}
-			$_SESSION['message'] = "Post updated successfully";
-			header('location: posts.php');
-			exit(0);
 		}
 	}
+
 	// delete blog post
 	function deletePost($post_id){
 		global $conn;
@@ -209,31 +196,4 @@ function createPost($request_values)
 			header("location: posts.php");
 		}
 	}
-
-    // publish post button
-    if (isset($_GET['publish']) || isset($_GET['unpublish'])) {
-        $message = "";
-        if (isset($_GET['publish'])) {
-            $message = "Post published successfully";
-            $post_id = $_GET['publish'];
-        } else if (isset($_GET['unpublish'])) {
-            $message = "Post successfully unpublished";
-            $post_id = $_GET['unpublish'];
-        }
-        togglePublishPost($post_id, $message);
-    }
-    // publish / unpublish blog post
-    function togglePublishPost($post_id, $message)
-    {
-        global $conn;
-        $sql = "UPDATE posts SET published=!published WHERE id=$post_id";
-        
-        if (mysqli_query($conn, $sql)) {
-            $_SESSION['message'] = $message;
-            header("location: posts.php");
-            exit(0);
-        }
-    }
-
-	// change topic button
 ?>
