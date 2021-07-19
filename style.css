@@ -395,4 +395,10 @@ ul {
     margin-top: 1%;
 }
 
+.preview-image {
+    margin-bottom: 1%;
+    height: 200px;
+    width: auto;
+}
+
 

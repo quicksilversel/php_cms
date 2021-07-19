@@ -31,6 +31,11 @@
                     <textarea name="body" id="body" cols="30" rows="10"><?php echo $body; ?></textarea>
                     <br>
                     <label>Featured image (Max size : 2MB) </label>
+                    <!-- image preview if editing post -->
+                    <?php /* if($featured_image != ""): ?>
+                        <img src="<?php echo BASE_URL . '/static/images/' . $featured_image; ?>" 
+                        class="preview-image" alt="">
+                    <?php endif */ ?>
                     <br>
                     <input type="file" name="featured_image" >
                     <br>
